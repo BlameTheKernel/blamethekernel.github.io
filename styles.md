@@ -1,3 +1,4 @@
+<!---
 ---
 layout: page
 title: Theme Styles
@@ -247,3 +248,5 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 It is awesome.
 
 <small>Source: Markdown code of this page is based on Ghost's [comprehensive style test](http://demo.ghost.io/style-test/)</small>
+
+--->
