@@ -10,7 +10,7 @@ excerpt_separator: <!--more-->
 
 Hi all! 
 
-I love to reversing and break stuff, and videogames is probably one of the most fun things to hack. Rules are okay but what would have happened if Neo followed the rules?? Exactly, he would have got a raise and would be happy with a wonderful fake life.
+I like to reverse and crack stuff, and videogames is probably one of the most fun things to hack. Rules are okay but what would have happened if Neo followed the rules?? Exactly, he would have got a raise and would be happy with a wonderful fake life.
 
 That's why we like to explain a bit how to start hacking some basic things in a videogame because breaking the rules can be fun also.
 
