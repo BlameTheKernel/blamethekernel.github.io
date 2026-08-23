@@ -1,4 +1,4 @@
----
+letoni---
 layout: post
 title: "CheatEngine: Hacking games memory"
 date: 2020-07-10 09:00:00 +0200
@@ -14,7 +14,7 @@ I like to reverse and crack stuff, and videogames is probably one of the most fu
 
 That's why we like to explain a bit how to start hacking some basic things in a videogame because breaking the rules can be fun also.
 
-The game we choose to analyze and hack is a hilarious game made by [ChaosMonger Studio](http://www.chaosmonger.com/), a letonian company with 20 years of experience. Clunky Hero!!
+The game we choose to analyze and hack is a hilarious game made by [ChaosMonger Studio](http://www.chaosmonger.com/), a Latvian company with 20 years of experience. Clunky Hero!!
 <!--more-->
 
 ![the muscles]( /assets/games/clunkyHero.png)
