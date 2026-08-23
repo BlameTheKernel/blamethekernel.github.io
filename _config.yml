@@ -42,11 +42,11 @@ social:
   links:
     # The first element serves as the copyright owner's link
     - https://www.linkedin.com/in/miguelseguraprats
-    #- https://twitter.com/blamethekernel      # change to your twitter homepage
     - https://github.com/blamethekernel       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
+    # - https://twitter.com/blamethekernel      # change to your twitter homepage
 
 google_site_verification: '' # change to your verification string
 
