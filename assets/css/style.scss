@@ -3,7 +3,6 @@
 
 @import "{{ site.theme }}";
 
-#sidebar #avatar a {
-  margin-left: 0;
-  margin-right: 0;
+#sidebar {
+  align-items: center !important;
 }
