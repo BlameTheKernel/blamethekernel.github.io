@@ -31,8 +31,8 @@ url: 'https://blamethekernel.github.io/'
 github:
   username: blamethekernel             # change to your github username
 
-twitter:
-  username: blamethekernel            # change to your twitter username
+#twitter:
+  #username: blamethekernel            # change to your twitter username
 
 social:
   # Change to your full name.
