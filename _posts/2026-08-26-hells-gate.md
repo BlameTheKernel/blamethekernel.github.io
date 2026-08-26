@@ -8,9 +8,13 @@ categories: Malware Evasion
 excerpt_separator: <!--more-->
 ---
 
-## Introduction
+EDR vendors have spent years hooking NTDLL functions to intercept suspicious API calls. Hell's Gate, published in 2019, offered a clean answer: skip NTDLL entirely and invoke syscalls directly, extracting the SSN from memory at runtime so nothing is hardcoded and no hook is ever hit.
 
-EDR vendors have spent years hooking NTDLL functions to intercept suspicious API calls. Hell's Gate, published in 2019, offered a clean answer: skip NTDLL entirely and invoke syscalls directly, extracting the SSN from memory at runtime so nothing is hardcoded and no hook is ever hit.<!--more-->
+<!--more-->
+
+![Hell Gate](/assets/img/HellsGate/hellsGateIntro.png)
+
+## Introduction
 
 This post kicks off a series on Direct Syscall techniques:
 
