@@ -12,7 +12,7 @@ EDR vendors have spent years hooking NTDLL functions to intercept suspicious API
 
 <!--more-->
 
-![Hell Gate](/assets/img/HellsGate/hellsGateIntro.png)
+![Hell Gate](/assets/img/HellsGate/hellsGateIntro2.png)
 
 ## Introduction
 
