@@ -20,7 +20,7 @@ This post kicks off a series on Direct Syscall techniques:
 
 - Syscall Series #1 - Hell's Gate
 - Syscall Series #2 - Tartarus' Gate (coming soon)
-- Syscall Series #3 - HellsHall (coming soon)
+- Syscall Series #3 - Hell's Hall (coming soon)
 - Syscall Series #4 - VEH Syscalls (coming soon)
 
 ## Background
