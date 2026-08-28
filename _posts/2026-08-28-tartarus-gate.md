@@ -30,9 +30,9 @@ The technique emerged in response to the increasing sophistication of EDRs, whic
 
 Hell's Gate works as long as the hook on the target function is a simple one, typically a JMP, because you can step over it by searching inside the function byte by byte (cw++). But if the function contains a more sophisticated hook, as modern EDRs tend to deploy, the entire function can be overwritten and there is no useful bytecode left to walk. That is the problem Tartarus' Gate solves.
 
-### How it works
+## How it works
 
-## Block-based search
+### Block-based search
 
 Instead of scanning byte by byte within a single function, Tartarus' Gate searches neighboring functions (adjacent in memory) until it finds an unhooked syscall stub. In ntdll, Nt* functions are physically sequential in memory, and their SSNs follow the same order.
 
@@ -44,14 +44,14 @@ If it finds, for example, NtCreateFile at -32 bytes, its SSN is lower. At +32 by
 
 ![Memory Layout](/assets/img/TartarusGate/tartarus_memory_layout.svg)
 
-## Hook detection
+### Hook detection
 
 Hell's Gate detects only the first hooked byte (linear search). Tartarus detects two specific patterns:
 
 - `0xe9` at offset 0: JMP at the function entry point
 - `0xe9` at offset 3: JMP after the first few instructions
 
-## SSN adjustment
+### SSN adjustment
 
 Tartarus' Gate calculates the SSN using the formula:
 
@@ -64,7 +64,7 @@ This can fail if functions are not contiguous or if the gap between them is larg
 
 Tartarus validates that the found SSN is coherent: if it found NtCreateThreadEx at +32 bytes, it verifies that its SSN is sequentially higher than expected. If it does not match, the result is rejected.
 
-### Limitations and what comes next
+## Limitations and what comes next
 
 Tartarus' Gate assumes that if the target function is hooked, its neighbors are clean. But sophisticated EDRs do not hook functions in isolation, they hook entire regions by risk category. An EDR might hook all memory management functions (NtAllocateVirtualMemory, NtFreeVirtualMemory, NtProtectVirtualMemory) within a range of 100 to 200 bytes. In that scenario, Tartarus searches in 32-byte blocks but keeps finding hooked functions. The search fails because there is no clean neighbor to fall back to.
 
