@@ -1,170 +1,150 @@
-<svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background -->
-  <rect width="1000" height="600" fill="#FFFFFF" stroke="none"/>
-
-  <!-- Title -->
-  <text x="500" y="40" font-size="28" font-weight="bold" text-anchor="middle" fill="#000">
-    Tartarus' Gate: Memory Layout Search
+<?xml version="1.0"?>
+<svg width="1000" height="600" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+ <!-- Background -->
+ <!-- Title -->
+ <!-- Legend -->
+ <!-- Previous Function (idx * DOWN = -32) -->
+ <!-- Arrow DOWN (-32) -->
+ <!-- Target Function (HOOKED) -->
+ <!-- Arrow UP (+32) -->
+ <!-- Next Function (idx * UP = +32) -->
+ <!-- SSN Calculation Box -->
+ <!-- Key Points Box -->
+ <g class="layer">
+  <title>Layer 1</title>
+  <rect x="0" y="0" width="1000" height="600" fill="#FFFFFF" id="svg_1"/>
+  <text x="500" y="40" font-size="28" font-weight="bold" text-anchor="middle" fill="#000" id="svg_2">
+    Tartarus&#x27; Gate: Memory Layout Search
   </text>
-
-  <!-- Legend -->
   <g id="legend" transform="translate(50, 70)">
-    <rect x="0" y="0" width="15" height="15" fill="#4CAF50" stroke="#333" stroke-width="1"/>
-    <text x="25" y="12" font-size="12" fill="#000">Clean Code</text>
-
-    <rect x="150" y="0" width="15" height="15" fill="#FF6B6B" stroke="#333" stroke-width="1"/>
-    <text x="175" y="12" font-size="12" fill="#000">Hooked</text>
-
-    <rect x="300" y="0" width="15" height="15" fill="#FFC107" stroke="#333" stroke-width="1"/>
-    <text x="325" y="12" font-size="12" fill="#000">Target Function</text>
+   <rect x="0" y="0" width="15" height="15" fill="#4CAF50" stroke="#333" id="svg_3"/>
+   <text x="25" y="12" font-size="12" fill="#000" id="svg_4">Clean Code</text>
+   <rect x="150" y="0" width="15" height="15" fill="#FF6B6B" stroke="#333" id="svg_5"/>
+   <text x="175" y="12" font-size="12" fill="#000" id="svg_6">Hooked</text>
+   <rect x="300" y="0" width="15" height="15" fill="#FFC107" stroke="#333" id="svg_7"/>
+   <text x="325" y="12" font-size="12" fill="#000" id="svg_8">Target Function</text>
   </g>
-
-  <!-- Previous Function (idx * DOWN = -32) -->
-  <g id="previous-func">
-    <!-- Label -->
-    <text x="250" y="145" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">
+  <g id="previous-func" transform="matrix(1 0 0 1 0 -28)">
+   <!-- Label -->
+   <text x="250" y="145" font-size="14" font-weight="bold" text-anchor="middle" fill="#333" id="svg_9">
       Previous Function (idx × -32 bytes)
     </text>
-
-    <!-- Function box -->
-    <rect x="100" y="150" width="300" height="100" fill="#4CAF50" stroke="#333" stroke-width="2" rx="5"/>
-
-    <!-- Bytecode pattern -->
-    <text x="110" y="180" font-family="monospace" font-size="12" fill="#000">
+   <!-- Function box -->
+   <rect x="100" y="150" width="300" height="100" fill="#4CAF50" stroke="#333" stroke-width="2" rx="5" id="svg_10"/>
+   <!-- Bytecode pattern -->
+   <text x="110" y="180" font-family="monospace" font-size="12" fill="#000" id="svg_11">
       0x4c 0x8b 0xd1 0xb8  &lt;SSN-idx&gt;
     </text>
-    <text x="110" y="205" font-family="monospace" font-size="12" fill="#000">
+   <text x="110" y="205" font-family="monospace" font-size="12" fill="#000" id="svg_12">
       mov r10, rcx
     </text>
-    <text x="110" y="230" font-family="monospace" font-size="12" fill="#000">
+   <text x="110" y="230" font-family="monospace" font-size="12" fill="#000" id="svg_13">
       mov eax, SSN (syscall number)
     </text>
-
-    <!-- Status -->
-    <text x="350" y="210" font-size="11" fill="#000" font-weight="bold">✓ Clean</text>
+   <!-- Status -->
+   <text x="350" y="210" font-size="11" fill="#000" font-weight="bold" id="svg_14" transform="matrix(1 0 0 1 -5 0)">✓ Clean</text>
   </g>
-
-  <!-- Arrow DOWN (-32) -->
-  <g id="arrow-down">
-    <defs>
-      <marker id="arrowhead-down" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-        <polygon points="0 0, 10 3, 0 6" fill="#4CAF50"/>
-      </marker>
-    </defs>
-    <line x1="250" y1="250" x2="250" y2="310" stroke="#4CAF50" stroke-width="3" marker-end="url(#arrowhead-down)"/>
-    <text x="275" y="282" font-size="12" fill="#4CAF50" font-weight="bold">idx=-1</text>
+  <g id="arrow-down" transform="matrix(1 0 0 1 -1 -27)">
+   <defs>
+    <marker id="arrowhead-down" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+     <polygon points="0 0, 10 3, 0 6" fill="#4CAF50" id="svg_15"/>
+    </marker>
+   </defs>
+   <line x1="250" y1="250" x2="250" y2="310" stroke="#4CAF50" stroke-width="3" marker-end="url(#arrowhead-down)" id="svg_16"/>
+   <text x="275" y="282" font-size="12" fill="#4CAF50" font-weight="bold" id="svg_17">idx=-1</text>
   </g>
-
-  <!-- Target Function (HOOKED) -->
-  <g id="target-func">
-    <!-- Label -->
-    <text x="250" y="315" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">
+  <g id="target-func" transform="matrix(1 0 0 1 5 -16)">
+   <!-- Label -->
+   <text x="250" y="315" font-size="14" font-weight="bold" text-anchor="middle" fill="#333" id="svg_18">
       Target Function (Hooked)
     </text>
-
-    <!-- Function box -->
-    <rect x="100" y="320" width="300" height="100" fill="#FFC107" stroke="#FF6B6B" stroke-width="3" rx="5"/>
-
-    <!-- Hook detection -->
-    <text x="110" y="350" font-family="monospace" font-size="12" fill="#FF0000" font-weight="bold">
+   <!-- Function box -->
+   <rect x="100" y="320" width="300" height="100" fill="#FFC107" stroke="#FF6B6B" stroke-width="3" rx="5" id="svg_19"/>
+   <!-- Hook detection -->
+   <text x="110" y="350" font-family="monospace" font-size="12" fill="#FF0000" font-weight="bold" id="svg_20">
       0xE9 (JMP reloc)  ← Hook!
     </text>
-    <text x="110" y="375" font-family="monospace" font-size="12" fill="#666">
+   <text x="110" y="375" font-family="monospace" font-size="12" fill="#666" id="svg_21">
       [Hooked bytecode - skip this]
     </text>
-    <text x="110" y="400" font-family="monospace" font-size="12" fill="#666">
+   <text x="110" y="400" font-family="monospace" font-size="12" fill="#666" id="svg_22">
       [Entire function may be hooked]
     </text>
-
-    <!-- Status -->
-    <text x="350" y="370" font-size="11" fill="#FF6B6B" font-weight="bold">✗ Hooked</text>
+   <!-- Status -->
+   <text x="350" y="370" font-size="11" fill="#FF6B6B" font-weight="bold" id="svg_23" transform="matrix(1 0 0 1 -19 5)">✗ Hooked</text>
   </g>
-
-  <!-- Arrow UP (+32) -->
-  <g id="arrow-up">
-    <defs>
-      <marker id="arrowhead-up" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-        <polygon points="0 0, 10 3, 0 6" fill="#2196F3"/>
-      </marker>
-    </defs>
-    <line x1="250" y1="420" x2="250" y2="480" stroke="#2196F3" stroke-width="3" marker-end="url(#arrowhead-up)"/>
-    <text x="275" y="452" font-size="12" fill="#2196F3" font-weight="bold">idx=+1</text>
+  <g id="arrow-up" transform="matrix(1 0 0 1 -2 -14)">
+   <defs>
+    <marker id="arrowhead-up" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+     <polygon points="0 0, 10 3, 0 6" fill="#2196F3" id="svg_24"/>
+    </marker>
+   </defs>
+   <line x1="250" y1="420" x2="250" y2="480" stroke="#2196F3" stroke-width="3" marker-end="url(#arrowhead-up)" id="svg_25"/>
+   <text x="275" y="452" font-size="12" fill="#2196F3" font-weight="bold" id="svg_26">idx=+1</text>
   </g>
-
-  <!-- Next Function (idx * UP = +32) -->
-  <g id="next-func">
-    <!-- Label -->
-    <text x="250" y="485" font-size="14" font-weight="bold" text-anchor="middle" fill="#333">
+  <g id="next-func" transform="matrix(1 0 0 1 4 -3)">
+   <!-- Label -->
+   <text x="250" y="485" font-size="14" font-weight="bold" text-anchor="middle" fill="#333" id="svg_27">
       Next Function (idx × +32 bytes)
     </text>
-
-    <!-- Function box -->
-    <rect x="100" y="490" width="300" height="100" fill="#4CAF50" stroke="#333" stroke-width="2" rx="5"/>
-
-    <!-- Bytecode pattern -->
-    <text x="110" y="520" font-family="monospace" font-size="12" fill="#000">
+   <!-- Function box -->
+   <rect x="100" y="490" width="300" height="100" fill="#4CAF50" stroke="#333" stroke-width="2" rx="5" id="svg_28"/>
+   <!-- Bytecode pattern -->
+   <text x="110" y="520" font-family="monospace" font-size="12" fill="#000" id="svg_29">
       0x4c 0x8b 0xd1 0xb8  &lt;SSN+idx&gt;
     </text>
-    <text x="110" y="545" font-family="monospace" font-size="12" fill="#000">
+   <text x="110" y="545" font-family="monospace" font-size="12" fill="#000" id="svg_30">
       mov r10, rcx
     </text>
-    <text x="110" y="570" font-family="monospace" font-size="12" fill="#000">
+   <text x="110" y="570" font-family="monospace" font-size="12" fill="#000" id="svg_31">
       mov eax, SSN (syscall number)
     </text>
-
-    <!-- Status -->
-    <text x="350" y="540" font-size="11" fill="#000" font-weight="bold">✓ Clean</text>
+   <!-- Status -->
+   <text x="350" y="540" font-size="11" fill="#000" font-weight="bold" id="svg_32" transform="matrix(1 0 0 1 -8 0)">✓ Clean</text>
   </g>
-
-  <!-- SSN Calculation Box -->
-  <g id="ssn-calc">
-    <rect x="500" y="250" width="420" height="330" fill="#F5F5F5" stroke="#333" stroke-width="2" rx="5"/>
-
-    <text x="710" y="280" font-size="16" font-weight="bold" text-anchor="middle" fill="#333">
+  <g id="ssn-calc" transform="matrix(1 0 0 1 8 -79)">
+   <rect x="500" y="250" width="420" height="330" fill="#F5F5F5" stroke="#333" stroke-width="2" rx="5" id="svg_33"/>
+   <text x="710" y="280" font-size="16" font-weight="bold" text-anchor="middle" fill="#333" id="svg_34">
       SSN Adjustment Formula
     </text>
-
-    <!-- Case 1: DOWN -->
-    <text x="520" y="320" font-size="12" font-weight="bold" fill="#333">
+   <!-- Case 1: DOWN -->
+   <text x="520" y="320" font-size="12" font-weight="bold" fill="#333" id="svg_35">
       If found DOWN (idx × -32):
     </text>
-    <text x="520" y="345" font-family="monospace" font-size="13" fill="#4CAF50">
+   <text x="520" y="345" font-family="monospace" font-size="13" fill="#4CAF50" id="svg_36">
       SSN = (high &lt;&lt; 8) | (low - idx)
     </text>
-    <text x="520" y="368" font-size="11" fill="#666">
+   <text x="520" y="368" font-size="11" fill="#666" id="svg_37">
       → SSN is lower (previous in sequence)
     </text>
-
-    <!-- Case 2: UP -->
-    <text x="520" y="410" font-size="12" font-weight="bold" fill="#333">
+   <!-- Case 2: UP -->
+   <text x="520" y="410" font-size="12" font-weight="bold" fill="#333" id="svg_38">
       If found UP (idx × +32):
     </text>
-    <text x="520" y="435" font-family="monospace" font-size="13" fill="#2196F3">
+   <text x="520" y="435" font-family="monospace" font-size="13" fill="#2196F3" id="svg_39">
       SSN = (high &lt;&lt; 8) | (low + idx)
     </text>
-    <text x="520" y="458" font-size="11" fill="#666">
+   <text x="520" y="458" font-size="11" fill="#666" id="svg_40">
       → SSN is higher (next in sequence)
     </text>
-
-    <!-- Example -->
-    <text x="520" y="510" font-size="11" font-weight="bold" fill="#333">
+   <!-- Example -->
+   <text x="520" y="510" font-size="11" font-weight="bold" fill="#333" id="svg_41">
       Example: Found at idx=2, low=0x18
     </text>
-    <text x="520" y="530" font-family="monospace" font-size="11" fill="#666">
+   <text x="520" y="530" font-family="monospace" font-size="11" fill="#666" id="svg_42">
       DOWN: SSN = 0x18 - 2 = 0x16
     </text>
-    <text x="520" y="550" font-family="monospace" font-size="11" fill="#666">
+   <text x="520" y="550" font-family="monospace" font-size="11" fill="#666" id="svg_43">
       UP:   SSN = 0x18 + 2 = 0x1A
     </text>
   </g>
-
-  <!-- Key Points Box -->
-  <g id="key-points">
-    <text x="710" y="590" font-size="11" fill="#666" font-weight="bold" text-anchor="middle">
+  <g id="key-points" transform="matrix(1 0 0 1 0 -70)">
+   <text x="710" y="590" font-size="11" fill="#666" font-weight="bold" text-anchor="middle" id="svg_44">
       Search range: ±16KB (500 iterations × 32 bytes per step)
     </text>
-    <text x="710" y="608" font-size="11" fill="#666" font-weight="bold" text-anchor="middle">
+   <text x="710" y="608" font-size="11" fill="#666" font-weight="bold" text-anchor="middle" id="svg_45">
       ntdll SSNs are sequential: ~1-7 number difference between adjacent functions
     </text>
   </g>
+ </g>
 </svg>

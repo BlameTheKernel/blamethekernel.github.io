@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<svg width="750" height="650" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 750 650" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
  <!-- Background -->
- <rect width="750" height="650" fill="#FFFFFF" stroke="none"/>
+ <rect x="0" y="0" width="750" height="650" fill="#FFFFFF" stroke="none"/>
  <!-- Title -->
  <!-- TARTARUS' GATE COLUMN -->
  <!-- Key Differences Box (small, compact) -->
