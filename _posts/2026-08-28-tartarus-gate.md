@@ -22,7 +22,7 @@ Tartarus' Gate is a dynamic syscall discovery technique that locates syscall num
 - Syscall Series #4 - VEH Syscalls (coming soon)
 
 ## Background
-Tartarus' Gate was published in November 2021 by Trickster (@trickster0) as a direct evolution of Hell's Gate. The repository can be found at Tartarus' Gate. [Tartarus' Gate](https://github.com/trickster0/TartarusGate).
+Tartarus' Gate was published in November 2021 by Trickster (@trickster0) as a direct evolution of Hell's Gate. The repository can be found at [Tartarus' Gate](https://github.com/trickster0/TartarusGate).
 
 The technique emerged in response to the increasing sophistication of EDRs, which began hooking entire functions instead of just the first few bytes. While Hell's Gate assumed clean bytecode existed within a hooked function, Tartarus' Gate shifted the paradigm: if there's no clean code in the target function, search the neighboring functions instead.
 
