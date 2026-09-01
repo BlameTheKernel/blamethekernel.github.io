@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<svg width="1200" height="700" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <defs>
+  <style>.title { font-size: 18px; font-weight: bold; font-family: monospace; }
+      .column-title { font-size: 14px; font-weight: bold; font-family: monospace; }
+      .box-label { font-size: 12px; font-weight: bold; font-family: monospace; }
+      .box-text { font-size: 11px; font-family: monospace; }
+      .draggable { cursor: move; }
+      .draggable:hover rect { opacity: 0.9; }</style>
+  <marker id="arrowhead-black" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+   <polygon points="0 0, 10 3, 0 6" fill="#333" id="svg_1"/>
+  </marker>
+  <marker id="arrowhead-orange" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+   <polygon points="0 0, 10 3, 0 6" fill="#ff6600" id="svg_2"/>
+  </marker>
+  <marker id="arrowhead-green" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+   <polygon points="0 0, 10 3, 0 6" fill="#00aa00" id="svg_3"/>
+  </marker>
+ </defs>
+ <!-- Fondo blanco -->
+ <!-- Title -->
+ <!-- Column Titles -->
+ <!-- Marco izquierdo (User Code) -->
+ <!-- Marco derecho (ntdll) -->
+ <!-- Box 1: Setup Arguments (AZUL) -->
+ <!-- Arrow 1 Down (negro, vertical) -->
+ <!-- Box 2: Jump to Syscall (AZUL) -->
+ <!-- Arrow 2 Horizontal (naranja) - recta horizontal -->
+ <!-- Box 3: Execute Syscall (ROJO) -->
+ <!-- Arrow 3 Down (negro, vertical) -->
+ <!-- Box 4: Kernel Mode (AMARILLO) -->
+ <!-- Arrow 4 Down (negro, vertical) -->
+ <!-- Box 5: Return to User (VERDE) -->
+ <!-- Arrow 5 Horizontal (verde) - recta horizontal -->
+ <!-- Box 6: Continue Execution (VERDE) -->
+ <!-- Instructions -->
+ <![CDATA[
+    let dragging = null;
+    let offsetX = 0;
+    let offsetY = 0;
+    const GRID = 10;
+
+    const boxes = document.querySelectorAll('.draggable');
+
+    boxes.forEach(box => {
+      box.addEventListener('mousedown', function(e) {
+        dragging = this;
+        const bbox = this.getBBox();
+        const transform = this.getAttribute('transform');
+        const match = transform.match(/translate\(([^,]+),([^)]+)\)/);
+        const tx = match ? parseFloat(match[1]) : 0;
+        const ty = match ? parseFloat(match[2]) : 0;
+
+        offsetX = e.clientX - (bbox.x + tx);
+        offsetY = e.clientY - (bbox.y + ty);
+        e.preventDefault();
+      });
+    });
+
+    document.addEventListener('mousemove', function(e) {
+      if (!dragging) return;
+
+      const svg = document.querySelector('svg');
+      const pt = svg.createSVGPoint();
+      pt.x = e.clientX;
+      pt.y = e.clientY;
+
+      const svgCoords = pt.matrixTransform(svg.getScreenCTM().inverse());
+      const bbox = dragging.getBBox();
+
+      let x = Math.round((svgCoords.x - offsetX) / GRID) * GRID;
+      let y = Math.round((svgCoords.y - offsetY) / GRID) * GRID;
+
+      x = Math.max(0, Math.min(x, 900));
+      y = Math.max(0, Math.min(y, 630));
+
+      dragging.setAttribute('transform', `translate(${x},${y})`);
+    });
+
+    document.addEventListener('mouseup', function() {
+      dragging = null;
+    });
+    ]]>
+ <g class="layer">
+  <title>Layer 1</title>
+  <rect width="1200" height="700" fill="white" id="svg_4"/>
+  <text x="600" y="30" class="title" text-anchor="middle" id="svg_5" style="cursor: move;">Indirect Syscalls </text>
+  <text x="250" y="70" class="column-title" fill="#0066cc" text-anchor="middle" id="svg_6" transform="matrix(1 0 0 1 58 15)">Implementation.exe (User Code)</text>
+  <text x="950" y="70" class="column-title" fill="#cc0000" text-anchor="middle" id="svg_7" transform="matrix(1 0 0 1 -134 20)" style="cursor: move;">ntdll.dll (Syscall)</text>
+  <rect x="143" y="99" width="370" height="420" fill="none" stroke="#0066cc" stroke-width="3" rx="4" id="svg_8"/>
+  <rect x="634" y="104" width="370" height="420" fill="none" stroke="#cc0000" stroke-width="3" rx="4" id="svg_9"/>
+  <g class="draggable" data-id="box1" transform="matrix(1 0 0 1 73 23)" id="svg_10">
+   <rect x="100" y="100" width="300" height="70" fill="#e8f4f8" stroke="#0066cc" stroke-width="2" rx="4" id="svg_11"/>
+   <text x="110" y="120" class="box-label" fill="#0066cc" id="svg_12">1. Setup Arguments</text>
+   <text x="110" y="140" class="box-text" id="svg_13">mov r10, rcx</text>
+   <text x="110" y="155" class="box-text" id="svg_14">mov eax, 0x50 (SSN)</text>
+  </g>
+  <line x1="315" y1="193" x2="315" y2="243" stroke="#333" stroke-width="2" marker-end="url(#arrowhead-black)" id="svg_15"/>
+  <g class="draggable" data-id="box2" transform="matrix(1 0 0 1 79 25)" id="svg_16">
+   <rect x="100" y="220" width="300" height="70" fill="#e8f4f8" stroke="#0066cc" stroke-width="2" rx="4" id="svg_17"/>
+   <text x="110" y="240" class="box-label" fill="#0066cc" id="svg_18">2. Jump to Syscall</text>
+   <text x="110" y="260" class="box-text" id="svg_19">jmp [ntdll.syscall_addr]</text>
+  </g>
+  <line x1="481" y1="274" x2="671" y2="274" stroke="#ff6600" stroke-width="2" marker-end="url(#arrowhead-orange)" id="svg_20"/>
+  <g class="draggable" data-id="box3" transform="matrix(1 0 0 1 -130 130)" id="svg_21">
+   <rect x="800" y="100" width="300" height="80" fill="#ffe8e8" stroke="#cc0000" stroke-width="2" rx="4" id="svg_22"/>
+   <text x="810" y="120" class="box-label" fill="#cc0000" id="svg_23">3. Execute Syscall</text>
+   <text x="810" y="140" class="box-text" id="svg_24">0x0F 0x05 (syscall)</text>
+   <text x="810" y="160" class="box-text" id="svg_25">RAX = 0x50 (NtCreateThreadEx)</text>
+  </g>
+  <line x1="811" y1="309" x2="811" y2="335" stroke="#333" stroke-width="2" marker-end="url(#arrowhead-black)" id="svg_26"/>
+  <g class="draggable" data-id="box4" transform="matrix(1 0 0 1 -128 105)" id="svg_27">
+   <rect x="800" y="230" width="300" height="70" fill="#ffffcc" stroke="#666" stroke-width="2" rx="4" id="svg_28"/>
+   <text x="810" y="250" class="box-label" fill="#333" id="svg_29">4. Kernel Mode</text>
+   <text x="810" y="270" class="box-text" id="svg_30">Execute NtCreateThreadEx</text>
+  </g>
+  <line x1="811" y1="406" x2="811" y2="442" stroke="#333" stroke-width="2" marker-end="url(#arrowhead-black)" id="svg_31"/>
+  <g class="draggable" data-id="box5" transform="matrix(1 0 0 1 -129 93)" id="svg_32">
+   <rect x="800" y="350" width="300" height="70" fill="#e8ffe8" stroke="#00aa00" stroke-width="2" rx="4" id="svg_33"/>
+   <text x="810" y="370" class="box-label" fill="#00aa00" id="svg_34">5. Return to User</text>
+   <text x="810" y="390" class="box-text" id="svg_35">RIP = ntdll.syscall_addr</text>
+  </g>
+  <line x1="669" y1="471" x2="471" y2="471" stroke="#00aa00" stroke-width="2" marker-end="url(#arrowhead-green)" id="svg_36"/>
+  <g class="draggable" data-id="box6" transform="matrix(1 0 0 1 70 -1)" id="svg_37">
+   <rect x="100" y="435" width="300" height="70" fill="#e8ffe8" stroke="#00aa00" stroke-width="2" rx="4" id="svg_38"/>
+   <text x="110" y="455" class="box-label" fill="#00aa00" id="svg_39">6. Continue Execution</text>
+   <text x="110" y="475" class="box-text" id="svg_40">ret (return from function)</text>
+  </g>
+  <rect x="406" y="537" width="405" height="120" fill="#f0f0f0" stroke="#999" rx="4" id="svg_41"/>
+  <text x="70" y="560" class="box-label" id="svg_42" transform="matrix(1 0 0 1 435 5)">Key Evasion Points:</text>
+  <text x="70" y="580" class="box-text" id="svg_43" transform="matrix(1 0 0 1 372 3)">• SSN loaded in EAX (0x50 = NtCreateThreadEx)</text>
+  <text x="70" y="595" class="box-text" id="svg_44" transform="matrix(1 0 0 1 372 6)">• Jump to ntdll syscall instruction (not direct call)</text>
+  <text x="70" y="610" class="box-text" id="svg_45" transform="matrix(1 0 0 1 372 12)">• Kernel sees return address in ntdll → appears legitimate</text>
+  <text x="70" y="625" class="box-text" id="svg_46" transform="matrix(1 0 0 1 371 18)">• InstrumentationCallback check: &quot;RIP is in valid DLL&quot; </text>
+ </g>
+</svg>

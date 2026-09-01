@@ -1,0 +1,97 @@
+<svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg">
+  <!-- Title -->
+  <text x="600" y="40" font-size="28" font-weight="bold" text-anchor="middle" fill="#000">
+    Hell's Gate vs Tartarus' Gate: Side-by-Side Comparison
+  </text>
+
+  <!-- HELL'S GATE COLUMN -->
+  <g id="hellsgate">
+    <!-- Header -->
+    <rect x="50" y="80" width="500" height="50" fill="#1976D2" stroke="#333" stroke-width="2" rx="5"/>
+    <text x="300" y="115" font-size="18" font-weight="bold" text-anchor="middle" fill="#fff">
+      Hell's Gate (2019)
+    </text>
+
+    <!-- Strategy -->
+    <rect x="60" y="150" width="480" height="80" fill="#E3F2FD" stroke="#1976D2" stroke-width="2" rx="5"/>
+    <text x="80" y="175" font-size="12" font-weight="bold" fill="#1976D2">Strategy:</text>
+    <text x="85" y="195" font-size="11" fill="#333">Search WITHIN hooked function for clean bytecode</text>
+    <text x="85" y="215" font-size="11" fill="#333">Assumes function is hooked at start, but has clean code inside</text>
+
+    <!-- Search Method -->
+    <rect x="60" y="250" width="480" height="100" fill="#FFF9C4" stroke="#F57F17" stroke-width="2" rx="5"/>
+    <text x="80" y="275" font-size="12" font-weight="bold" fill="#F57F17">Search Method:</text>
+    <text x="85" y="295" font-family="monospace" font-size="10" fill="#333">cw = 0</text>
+    <text x="85" y="315" font-family="monospace" font-size="10" fill="#333">while (cw < limit) {</text>
+    <text x="100" y="335" font-family="monospace" font-size="10" fill="#333">  if (bytecode[cw] == pattern) return SSN</text>
+    <text x="100" y="355" font-family="monospace" font-size="10" fill="#333">  cw++  // Byte-by-byte</text>
+    <text x="85" y="375" font-family="monospace" font-size="10" fill="#333">}</text>
+
+    <!-- Increment -->
+    <rect x="60" y="370" width="480" height="60" fill="#F3E5F5" stroke="#7B1FA2" stroke-width="2" rx="5"/>
+    <text x="80" y="395" font-size="12" font-weight="bold" fill="#7B1FA2">Increment:</text>
+    <text x="85" y="415" font-family="monospace" font-size="11" fill="#333">cw++ (1 byte at a time)</text>
+
+    <!-- Limitations -->
+    <rect x="60" y="450" width="480" height="100" fill="#FFEBEE" stroke="#D32F2F" stroke-width="2" rx="5"/>
+    <text x="80" y="475" font-size="12" font-weight="bold" fill="#D32F2F">Limitations:</text>
+    <text x="85" y="495" font-size="11" fill="#333">✗ Fails if entire function is hookeado</text>
+    <text x="85" y="515" font-size="11" fill="#333">✗ No code available = SSN not found</text>
+    <text x="85" y="535" font-size="11" fill="#333">✗ May detect hooks but can't bypass them</text>
+
+    <!-- Pros -->
+    <rect x="60" y="570" width="480" height="80" fill="#E8F5E9" stroke="#4CAF50" stroke-width="2" rx="5"/>
+    <text x="80" y="595" font-size="12" font-weight="bold" fill="#4CAF50">Advantages:</text>
+    <text x="85" y="615" font-size="11" fill="#333">✓ Simple algorithm, low overhead</text>
+    <text x="85" y="635" font-size="11" fill="#333">✓ First dynamic SSN discovery technique</text>
+  </g>
+
+  <!-- TARTARUS' GATE COLUMN -->
+  <g id="tartarus">
+    <!-- Header -->
+    <rect x="650" y="80" width="500" height="50" fill="#D32F2F" stroke="#333" stroke-width="2" rx="5"/>
+    <text x="900" y="115" font-size="18" font-weight="bold" text-anchor="middle" fill="#fff">
+      Tartarus' Gate (2021)
+    </text>
+
+    <!-- Strategy -->
+    <rect x="660" y="150" width="480" height="80" fill="#FFEBEE" stroke="#D32F2F" stroke-width="2" rx="5"/>
+    <text x="680" y="175" font-size="12" font-weight="bold" fill="#D32F2F">Strategy:</text>
+    <text x="685" y="195" font-size="11" fill="#333">Search in NEIGHBORING functions (memory adjacent)</text>
+    <text x="685" y="215" font-size="11" fill="#333">Uses block jumps to find clean code in other functions</text>
+
+    <!-- Search Method -->
+    <rect x="660" y="250" width="480" height="120" fill="#FFF9C4" stroke="#F57F17" stroke-width="2" rx="5"/>
+    <text x="680" y="275" font-size="12" font-weight="bold" fill="#F57F17">Search Method:</text>
+    <text x="685" y="295" font-family="monospace" font-size="10" fill="#333">for (idx = 1; idx &lt;= 500; idx++) {</text>
+    <text x="700" y="315" font-family="monospace" font-size="10" fill="#333">  addr_down = target + idx * (-32)</text>
+    <text x="700" y="335" font-family="monospace" font-size="10" fill="#333">  if (bytecode[addr_down] == pattern)</text>
+    <text x="715" y="355" font-family="monospace" font-size="10" fill="#333">    return SSN - idx</text>
+    <text x="700" y="375" font-family="monospace" font-size="10" fill="#333">  addr_up = target + idx * (+32)</text>
+    <text x="715" y="395" font-family="monospace" font-size="10" fill="#333">  // Similar for UP direction</text>
+    <text x="685" y="415" font-family="monospace" font-size="10" fill="#333">}</text>
+
+    <!-- Increment -->
+    <rect x="660" y="390" width="480" height="60" fill="#F3E5F5" stroke="#7B1FA2" stroke-width="2" rx="5"/>
+    <text x="680" y="415" font-size="12" font-weight="bold" fill="#7B1FA2">Increment:</text>
+    <text x="685" y="435" font-family="monospace" font-size="11" fill="#333">idx * (±32 bytes) = block search</text>
+
+    <!-- Advantages -->
+    <rect x="660" y="470" width="480" height="100" fill="#E8F5E9" stroke="#4CAF50" stroke-width="2" rx="5"/>
+    <text x="680" y="495" font-size="12" font-weight="bold" fill="#4CAF50">Advantages:</text>
+    <text x="685" y="515" font-size="11" fill="#333">✓ Searches neighboring functions (more resilient)</text>
+    <text x="685" y="535" font-size="11" fill="#333">✓ Works even if target function is completely hooked</text>
+    <text x="685" y="555" font-size="11" fill="#333">✓ Efficient block jumps (32-byte steps)</text>
+
+    <!-- Limitations -->
+    <rect x="660" y="590" width="480" height="80" fill="#FFEBEE" stroke="#D32F2F" stroke-width="2" rx="5"/>
+    <text x="680" y="615" font-size="12" font-weight="bold" fill="#D32F2F">Limitations:</text>
+    <text x="685" y="635" font-size="11" fill="#333">✗ Assumes adjacent functions have sequential SSNs</text>
+    <text x="685" y="655" font-size="11" fill="#333">✗ May fail if entire memory region is hooked</text>
+  </g>
+
+  <!-- Summary Table -->
+  <g id="summary">
+    <rect x="50" y="690" width="1100" height="1" fill="#999" stroke-width="1"/>
+  </g>
+</svg>
