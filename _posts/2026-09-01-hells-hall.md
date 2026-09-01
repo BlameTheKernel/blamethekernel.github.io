@@ -12,7 +12,7 @@ Hell's Hall is an indirect syscall technique that executes syscall instructions 
 
 <!--more-->
 
-![Hells Hall](/assets/img/HellsHall/hells_hall.png)
+![Hells Hall](/assets/img/HellsHall/hells_hall2.png)
 
 ## Introduction
 
