@@ -18,7 +18,7 @@ Tartarus' Gate is a dynamic syscall discovery technique that locates syscall num
 
 - [Syscall Series #1 - Hell's Gate](https://gatesofkernel.com/posts/hells-gate/)
 - Syscall Series #2 - Tartarus' Gate
-- Syscall Series #3 - HellsHall (coming soon)
+- [Syscall Series #3 - Hell's Hall](https://gatesofkernel.com/posts/hells-hall/)
 - Syscall Series #4 - VEH Syscalls (coming soon)
 
 ## Background
